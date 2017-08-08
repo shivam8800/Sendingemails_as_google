@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+
+{% load staticfiles %}
+{% block content %}
+	{% for mail_detail in to_mail %}
+	  <div class="panel panel-default">
+	  	<div class="panel-heading" id="sender"><span style="color:blue;">SENDER ADDRESS:--</span>{{mail_detail.user.email}}
+
+	  	 <a class="btn btn-default" href="/mail_remove/{{mail.pk}}/" style="float: right; margin-top: -4px;"><span class="glyphicon glyphicon-remove"></span></a> 
+
+	  	</div>
+	  	<div class="panel-heading" id="receiver"><span style="color:blue;">RECEIVER ADDRESS:--</span>{{mail_detail.Receiver}}</div>
+	  	<div class="panel-heading" id="subject"><span style="color:blue;">SUBJECT:--</span>{{mail_detail.Subject}}</div>
+	    <div class="panel-body">{{ mail_detail.Message|linebreaksbr }}</div>
+	  </div>
+  {% endfor %}
+{% endblock %}

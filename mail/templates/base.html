@@ -1,0 +1,35 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>Mail</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/theme.css' %}">
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    </head>
+    <body class="body">
+        <div class="page-header">
+        
+        {% if user.is_authenticated %}
+        <center><h1 style="line-height: 0px;">{{ user.username}}</h1></center>
+            <a href="{% url 'inbox' %}" style="color: black; float: right; margin-right: 40px;"><h1>inbox</h1></a>
+            <a href="{% url 'send_email' %}" class="top-menu" style="float: right; margin-right: 40px; color: black;"><h1><span class="glyphicon glyphicon-send"></span></h1></a>
+
+            <a href="{% url 'signout' %}" class="top-menu" style="float: right; margin-right: 60px; color: black;"><h1>logout</h1></a>
+        {% else %}
+            <a href="{% url 'login' %}" class="top-menu" style="float: right; margin-left: 50px; color: black;"><h1><span class="glyphicon glyphicon-lock"></span></h1></a>
+        {% endif %}
+
+            <a href="{% url 'home' %}" style="color: black;"><h1>Sending Mails</h1></a>
+        </div>
+
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
