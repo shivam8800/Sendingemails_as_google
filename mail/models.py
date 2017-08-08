@@ -6,15 +6,9 @@ class Mail(models.Model):
 	Receiver = models.EmailField()
 	Subject = models.CharField(max_length=30)
 	Message = models.TextField()
+	is_deleted_receiver = models.BooleanField(default=False)
+	is_deleted_sender =  models.BooleanField(default=True)
+
 
 	def __str__(self):
 		return self.Receiver
-
-# class ReceivingMail(models.Model):
-# 	user = models.ForeignKey(Mail)
-# 	Sender = models.EmailField()
-# 	Subject = models.CharField(max_length=30)
-# 	Message = models.TextField()
-
-# 	def __str__(self):
-# 		return self.Sender
